@@ -30,7 +30,7 @@ class Orthomosaic:
         self.images = []
         for imagePath in self.imagePaths:
             self.image_temp = cv2.imread(imagePath)
-            scale_percent = 30 # percent of original size
+            scale_percent = 100 # percent of original size
             width = int(self.image_temp.shape[1] * scale_percent / 100)
             height = int(self.image_temp.shape[0] * scale_percent / 100)
             dim = (width, height)
@@ -89,7 +89,7 @@ class Orthomosaic:
                 good.append(m)
 
         # Set minimum match condition
-        MIN_MATCH_COUNT = 2
+        MIN_MATCH_COUNT = 0
 
         if len(good) > MIN_MATCH_COUNT:
             # Convert keypoints to an argument for findHomography
