@@ -30,7 +30,7 @@ class Orthomosaic:
         self.images = []
         for imagePath in self.imagePaths:
             self.image_temp = cv2.imread(imagePath)
-            scale_percent = 100 # percent of original size
+            scale_percent = 50 # percent of original size
             width = int(self.image_temp.shape[1] * scale_percent / 100)
             height = int(self.image_temp.shape[0] * scale_percent / 100)
             dim = (width, height)
@@ -59,6 +59,7 @@ class Orthomosaic:
 
         # self.final_image = self.sticher(self.images[0], self.images[1])
         cv2.imshow("output", self.final_image)
+        cv2.imwrite("output.png", self.final_image)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
         pass
